@@ -10,8 +10,8 @@ module Devise
       private
 
       def self.mailer_class_attributes
-        if mailer_class.respond_to?(:attributess)
-          mailer_class.attributess.clone
+        if mailer_class.respond_to?(:attributes)
+          mailer_class.attributes.clone
         else
           {}
         end
