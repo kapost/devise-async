@@ -12,8 +12,8 @@ module Devise
         # compatibility among diferent ORMs.
         def perform(method, resource_class, resource_id, attributes)
           resource = resource_class.constantize.to_adapter.get!(resource_id)
+          resource.mailer_attributes = attributes.clone if resource.respond_to?(:mailer_attributes=)
 
-          mailer_class.attributes = attributes
           mailer_class.send(method, resource).deliver
         end
 
